@@ -25,7 +25,7 @@ float rnd(float x) {
 float drawCircle(vec2 uv, vec2 center, float radius) {
   // smoothstep 如果x <= agr0，返回0.0 ；如果x >= agr1 返回1.0；如果agr0 < x <
   // agr1，则执行0~1之间的平滑埃尔米特差值。如果agr0 >= agr1，结果是未定义的。
-  return 1. - smoothstep(0., radius, length(uv - center));
+  return 1. - smoothstep(0.0, radius, length(uv - center));
 }
 
 void main() {
@@ -39,19 +39,20 @@ void main() {
     j = float(i);
 
     float speed =
-        .3 + rnd(cos(j)) * (.7 + .5 * cos(j / (float(_SnowflakeAmount) * .25)));
+        0.3 +
+        rnd(cos(j)) * (0.7 + 0.5 * cos(j / (float(_SnowflakeAmount) * 0.25)));
 
     vec2 center = vec2(
         // x坐标 左右环绕分布的范围
         rnd(j) + ///< 根据雪花的索引随机起始位置
-            (-.25 + uv.y) * _BlizardFactor ///< 越高的位置越往右偏
-            + .1 * cos(u_time + sin(j)),
+            (-0.25 + uv.y) * _BlizardFactor ///< 越高的位置越往右偏
+            + 0.1 * cos(u_time + sin(j)),
         // y坐标  随着时间下降（不超过 0.95）
         mod(rnd(j) ///< 根据雪花的索引随机起始位置
-                - speed * (u_time * 1.5 * (.1 + _BlizardFactor)),
-            .95));
+                - speed * (u_time * 1.5 * (0.1 + _BlizardFactor)),
+            0.95));
     gl_FragColor +=
-        vec4(.9 * drawCircle(uv, center,
-                             .001 + speed * .012)); // 输出是这些圆的颜色叠加
+        vec4(0.9 * drawCircle(uv, center,
+                              0.001 + speed * 0.012)); // 输出是这些圆的颜色叠加
   }
 }
