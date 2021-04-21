@@ -27,11 +27,11 @@ void drawImg(PImage source)
     float img_r = source.width * 1.0 / source.height;
     float ratio=1.0;
     if(sreen_r > img_r){
-      ratio=height*1.0 / img.height;
-      translate(abs(width-img.width*ratio)*0.5, abs(height-img.height*ratio));
+      ratio=height*1.0 / source.height;
+      translate(abs(width-source.width*ratio)*0.5, abs(height-source.height*ratio));
     }else{
-      ratio=width*1.0 / img.width;
-      translate(abs(width-img.width*ratio), abs(height-(img.height*ratio))*0.5);
+      ratio=width*1.0 / source.width;
+      translate(abs(width-source.width*ratio), abs(height-(source.height*ratio))*0.5);
     }
     scale(ratio);
    
