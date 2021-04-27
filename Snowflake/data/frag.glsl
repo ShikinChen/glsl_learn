@@ -12,6 +12,8 @@ uniform float u_time;
 uniform sampler2D u_img;
 
 in vec2 v_texCoord;
+in vec4 v_position;
+in mat4 v_transform;
 
 float rnd(float x) {
   // fract 返回x的小数部分
