@@ -12,6 +12,11 @@ float insideBox(vec2 v, vec2 bottomLeft, vec2 topRight) {
   return s.x * s.y;
 }
 
+float insideBox3D(vec3 v, vec3 bottomLeft, vec3 topRight) {
+    vec3 s = step(bottomLeft, v) - step(topRight, v);
+    return s.x * s.y * s.z; 
+}
+
 void main() {
   vec4 color = vec4(0.6, 0.3, 0.5, 1.0);
   vec2 texCoord = gl_FragCoord.xy / u_resolution.xy;
