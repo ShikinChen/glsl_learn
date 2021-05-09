@@ -4,7 +4,7 @@ void setup()
 {
     size(640, 640, P3D);
     noStroke();
-    shader = loadShader("frag_test.glsl");
+    shader = loadShader("frag.glsl");
 }
  
 void draw()
